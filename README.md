@@ -1,5 +1,7 @@
 # dotfiles
 
+Heavily inspired by [dmmulroy/.dotfiles](https://github.com/dmmulroy/.dotfiles).
+
 Bare git repo for tracking config files.
 
 ## Setup on a new machine
