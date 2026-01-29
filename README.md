@@ -1,6 +1,6 @@
 # dotfiles
 
-Heavily inspired by [dmmulroy/.dotfiles](https://github.com/dmmulroy/.dotfiles).
+Heavily inspired by (stolen from) [dmmulroy/.dotfiles](https://github.com/dmmulroy/.dotfiles).
 
 Bare git repo for tracking config files.
 
