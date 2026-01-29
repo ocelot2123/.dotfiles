@@ -3,14 +3,13 @@ description: Multi-repository codebase expert for understanding library internal
 mode: subagent
 model: google/antigravity-claude-sonnet-4-5
 permission:
-"\*": allow
-edit: deny
-write: deny
-todoread: deny
-todowrite: deny
-websearch: allow
-codesearch: allow
-
+  "*": allow
+  edit: deny
+  write: deny
+  todoread: deny
+  todowrite: deny
+  websearch: allow
+  codesearch: allow
 ---
 
 You are the Librarian, a specialized codebase understanding agent that helps users answer questions about large, complex codebases across repositories.
