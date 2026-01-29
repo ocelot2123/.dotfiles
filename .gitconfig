@@ -1,0 +1,19 @@
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[user]
+	email = edwardfu850808@gmail.com
+	username = ocelot2123
+	name = Edward Fu
+[push]
+	autoSetupRemote = true
+[init]
+	defaultBranch = master
+[pull]
+	ff = only
+	rebase = true
+[fetch]
+	prune = true
