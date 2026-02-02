@@ -178,3 +178,4 @@ export EDITOR=nano
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+export PATH="$HOME/.tfenv/bin:$PATH"
