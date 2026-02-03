@@ -21,8 +21,12 @@
       "enabled": true
     },
     "overseer": {
-      "command": "npx",
-      "args": ["@dmmulroy/overseer", "mcp"]
+      "type": "local",
+      "command": [
+        "os",
+        "mcp"
+      ],
+      "enabled": true
     }
   },
   "provider": {
