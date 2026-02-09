@@ -171,7 +171,7 @@ complete -o bashdefault -o default -F _gt_yargs_completions gt
 
 
 # opencode
-export PATH=/home/edward/.opencode/bin:$PATH
+export PATH=~/.opencode/bin:$PATH
 export EDITOR=nano
 
 # bun
