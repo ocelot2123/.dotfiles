@@ -32,6 +32,7 @@ Phase: CLARIFY | Waiting for: answers to questions 1-4
 ## Phase 1: CLARIFY (Mandatory)
 
 **Hard rule:** No spec until user has responded to at least one round of questions.
+**Hard rule:** Always use the question tool to ask questions.
 
 1. **STOP.** Do not proceed to planning.
 2. Identify gaps in: scope, motivation, constraints, edge cases, success criteria
