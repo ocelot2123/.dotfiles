@@ -26,6 +26,20 @@
       "enabled": true
     }
   },
+  "tools": {
+    "context7_*": false,
+    "grep_app_*": false,
+    "opensrc_*": false
+  },
+  "agent": {
+    "librarian": {
+      "tools": {
+        "context7_*": true,
+        "grep_app_*": true,
+        "opensrc_*": true
+      }
+    }
+  },
   "provider": {
     "google": {
       "models": {
