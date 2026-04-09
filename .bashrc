@@ -182,3 +182,5 @@ export PATH="$HOME/.tfenv/bin:$PATH"
 
 alias oc='opencode attach http://localhost:4096'
 alias oc-web='opencode web --hostname 0.0.0.0 --port 4096'
+
+export PLANNOTATOR_REMOTE=1
