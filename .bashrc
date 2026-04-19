@@ -169,6 +169,10 @@ _gt_yargs_completions()
 complete -o bashdefault -o default -F _gt_yargs_completions gt
 ###-end-gt-completions-###
 
+# Load private environment variables
+if [ -f "$HOME/.secrets" ]; then
+    source "$HOME/.secrets"
+fi
 
 # opencode
 export PATH=~/.opencode/bin:$PATH
