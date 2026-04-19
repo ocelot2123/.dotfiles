@@ -97,12 +97,12 @@ If the user asks to host/serve/share the walkthrough:
 
 ```bash
 # Start local HTTP server
-cd walkthrough && python3 -m http.server 8787 &>/tmp/walkthrough-server.log &
+cd walkthrough && python3 -m http.server 3745 &>/tmp/walkthrough-server.log &
 echo "Server PID: $!"
 sleep 1
 
 # Start cloudflared tunnel
-cloudflared tunnel --url http://localhost:8787 &>/tmp/cloudflared-tunnel.log &
+cloudflared tunnel --url http://localhost:3745 &>/tmp/cloudflared-tunnel.log &
 echo "Tunnel PID: $!"
 sleep 5
 
