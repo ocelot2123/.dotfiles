@@ -1,18 +1,18 @@
 import { fileURLToPath } from "node:url"
 import { playSoundNotification } from "../play-sound-notification.js"
 
-const SERVICE = "permission sound notification"
+const SERVICE = "prompt sound notification"
 const SOUND_FILE = fileURLToPath(
   new URL("../sounds/wc3_peasant_yes_me_lord.wav", import.meta.url),
 )
-const RECENT_PERMISSION_IDS = new Set()
+const RECENT_REQUEST_IDS = new Set()
 
-function rememberPermission(id) {
-  if (RECENT_PERMISSION_IDS.has(id)) return false
+function rememberRequest(id) {
+  if (RECENT_REQUEST_IDS.has(id)) return false
 
-  RECENT_PERMISSION_IDS.add(id)
+  RECENT_REQUEST_IDS.add(id)
   setTimeout(() => {
-    RECENT_PERMISSION_IDS.delete(id)
+    RECENT_REQUEST_IDS.delete(id)
   }, 5000)
 
   return true
@@ -21,13 +21,17 @@ function rememberPermission(id) {
 export const PermissionSoundNotificationPlugin = async ({ client }) => {
   return {
     async event({ event }) {
-      // Support both current and older permission event names.
-      if (event.type !== "permission.asked" && event.type !== "permission.updated") {
+      // Support current question/permission prompts plus older permission event names.
+      if (
+        event.type !== "permission.asked"
+        && event.type !== "permission.updated"
+        && event.type !== "question.asked"
+      ) {
         return
       }
 
       if (typeof event.properties.id === "string") {
-        if (!rememberPermission(event.properties.id)) return
+        if (!rememberRequest(event.properties.id)) return
       }
 
       playSoundNotification({
