@@ -40,5 +40,6 @@
         "apiKey": "{env:CLI_PROXY_API_KEY}"
       }
     }
-  }
+  },
+  "small_model": "opencode-go/qwen3.5-plus"
 }
