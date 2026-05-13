@@ -5,9 +5,8 @@
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
 [user]
-	email = edwardfu850808@gmail.com
 	username = ocelot2123
-	name = Edward Fu
+	useConfigOnly = true
 [push]
 	autoSetupRemote = true
 [init]
