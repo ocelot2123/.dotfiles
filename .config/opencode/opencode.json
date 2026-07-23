@@ -2,7 +2,8 @@
   "$schema": "https://opencode.ai/config.json",
   "autoupdate": true,
   "plugin": [
-    "@plannotator/opencode@latest"
+    "@plannotator/opencode@latest",
+    "./plugins/t3n-delegation-inject.js"
   ],
   "mcp": {
     "context7": {
@@ -25,13 +26,23 @@
       "enabled": true
     },
     "executor": {
+      "type": "remote",
+      "url": "http://192.168.50.10:4788/mcp",
+      "enabled": true
+    },
+    "t3n-mcp-testnet": {
       "type": "local",
-      "command": [
-        "executor",
-        "mcp"
-      ],
       "enabled": true,
-      "environment": {}
+      "command": [
+        "node",
+        "/home/edward/work/t3/z-trinity/trinity/client/mcp/t3n-mcp/bin/t3n-mcp.js",
+        "--env=testnet"
+      ],
+      "environment": {
+        "PRIVATE_KEY": "{env:T3N_PRIVATE_KEY}",
+        "T3N_MCP_AGENT_SECRET_HEX": "{env:T3N_MCP_AGENT_SECRET_HEX}",
+        "T3N_Z_PAYROLL_CONTRACT_VERSION": "1.3.2"
+      }
     }
   },
   "tools": {
@@ -58,7 +69,8 @@
     "openai": {
       "options": {
         "baseURL": "http://127.0.0.1:8317/v1",
-        "apiKey": "{env:CLI_PROXY_API_KEY}"
+        "apiKey": "{env:CLI_PROXY_API_KEY}",
+        "headerTimeout": 5000
       }
     }
   },
