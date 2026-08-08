@@ -45,18 +45,13 @@
       }
     }
   },
-  "tools": {
-    "context7_*": false,
-    "grep_app_*": false,
-    "opensrc_*": false
+  "permission": {
+    "context7_*": "deny",
+    "grep_app_*": "deny",
+    "opensrc_*": "deny"
   },
   "agent": {
     "librarian": {
-      "tools": {
-        "context7_*": true,
-        "grep_app_*": true,
-        "opensrc_*": true
-      },
       "options": {},
       "permission": {
         "context7_*": "allow",
