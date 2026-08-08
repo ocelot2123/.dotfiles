@@ -69,5 +69,5 @@
       }
     }
   },
-  "small_model": "opencode-go/deepseek-v4-flash"
+  "small_model": "opencode-go/qwen3.7-plus"
 }
