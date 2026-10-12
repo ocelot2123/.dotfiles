@@ -39,7 +39,7 @@
         "oauth": false,
         "disabled": true,
         "headers": {
-          "X-T3N-Api-Key": "***REMOVED***"
+          "X-T3N-Api-Key": "{env:T3N_API_KEY}"
         }
       },
       "t3n-demo-mcp-with-auth": {
@@ -48,7 +48,7 @@
         "oauth": false,
         "disabled": true,
         "headers": {
-          "X-T3N-Api-Key": "***REMOVED***"
+          "X-T3N-Api-Key": "{env:T3N_DEMO_API_KEY}"
         }
       },
       "t3n-demo-mcp": {
@@ -63,7 +63,7 @@
         "oauth": false,
         "disabled": true,
         "headers": {
-          "X-T3N-Api-Key": "***REMOVED***"
+          "X-T3N-Api-Key": "{env:HSBC_T3N_API_KEY}"
         }
       }
     }
