@@ -1,73 +1,97 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "autoupdate": true,
-  "plugin": [
-    "@plannotator/opencode@latest",
-    "./plugins/t3n-delegation-inject.js"
+  "update": "auto",
+  "plugins": [
+    "@plannotator/opencode@latest"
   ],
   "mcp": {
-    "context7": {
-      "type": "remote",
-      "url": "https://mcp.context7.com/mcp",
-      "enabled": true
-    },
-    "grep_app": {
-      "type": "remote",
-      "url": "https://mcp.grep.app",
-      "enabled": true
-    },
-    "opensrc": {
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "opensrc-mcp"
-      ],
-      "enabled": true
-    },
+    "servers": {
+      "context7": {
+        "type": "remote",
+        "url": "https://mcp.context7.com/mcp",
+        "disabled": false
+      },
+      "grep_app": {
+        "type": "remote",
+        "url": "https://mcp.grep.app",
+        "disabled": false
+      },
+      "opensrc": {
+        "type": "local",
+        "command": [
+          "npx",
+          "-y",
+          "opensrc-mcp"
+        ],
+        "disabled": false
+      },
     "executor": {
       "type": "remote",
-      "url": "http://192.168.50.10:4788/mcp",
-      "enabled": true
-    },
-    "t3n-mcp-testnet": {
-      "type": "local",
-      "enabled": true,
-      "command": [
-        "node",
-        "/home/edward/work/t3/z-trinity/trinity/client/mcp/t3n-mcp/bin/t3n-mcp.js",
-        "--env=testnet"
-      ],
-      "environment": {
-        "PRIVATE_KEY": "{env:T3N_PRIVATE_KEY}",
-        "T3N_MCP_AGENT_SECRET_HEX": "{env:T3N_MCP_AGENT_SECRET_HEX}",
-        "T3N_Z_PAYROLL_CONTRACT_VERSION": "1.3.2"
+      "url": "http://localhost:4788/mcp",
+      "oauth": {
+        "callback_port": 19876
+      },
+      "disabled": false
+      },
+      "t3n-mcp": {
+        "type": "remote",
+        "url": "http://127.0.0.1:8082/mcp",
+        "oauth": false,
+        "disabled": true,
+        "headers": {
+          "X-T3N-Api-Key": "***REMOVED***"
+        }
+      },
+      "t3n-demo-mcp-with-auth": {
+        "type": "remote",
+        "url": "https://demo.mcp.terminal3.io/mcp",
+        "oauth": false,
+        "disabled": true,
+        "headers": {
+          "X-T3N-Api-Key": "***REMOVED***"
+        }
+      },
+      "t3n-demo-mcp": {
+        "type": "remote",
+        "url": "https://demo.mcp.terminal3.io/mcp",
+        "oauth": false,
+        "disabled": true
+      },
+      "hsbc-t3n-mcp": {
+        "type": "remote",
+        "url": "https://hsbc.mcp.terminal3.io/mcp",
+        "oauth": false,
+        "disabled": true,
+        "headers": {
+          "X-T3N-Api-Key": "***REMOVED***"
+        }
       }
     }
   },
-  "permission": {
-    "context7_*": "deny",
-    "grep_app_*": "deny",
-    "opensrc_*": "deny"
-  },
-  "agent": {
+  "permissions": [
+    { "action": "context7_*", "resource": "*", "effect": "deny" },
+    { "action": "grep_app_*", "resource": "*", "effect": "deny" },
+    { "action": "opensrc_*", "resource": "*", "effect": "deny" }
+  ],
+  "agents": {
     "librarian": {
-      "options": {},
-      "permission": {
-        "context7_*": "allow",
-        "grep_app_*": "allow",
-        "opensrc_*": "allow"
-      }
+      "permissions": [
+        { "action": "context7_*", "resource": "*", "effect": "allow" },
+        { "action": "grep_app_*", "resource": "*", "effect": "allow" },
+        { "action": "opensrc_*", "resource": "*", "effect": "allow" }
+      ]
+    },
+    "title": {
+      "model": "opencode-go/qwen3.7-plus"
     }
   },
-  "provider": {
+  "providers": {
     "openai": {
-      "options": {
+      "settings": {
         "baseURL": "http://127.0.0.1:8317/v1",
         "apiKey": "{env:CLI_PROXY_API_KEY}",
         "headerTimeout": 30000
       }
     }
-  },
-  "small_model": "opencode-go/qwen3.7-plus"
+  }
 }

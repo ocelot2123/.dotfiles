@@ -1,10 +1,16 @@
 ---
 description: Reviews code for quality, bugs, security, and best practices
 mode: subagent
-temperature: 0.1
-permission:
-  edit: deny
-  webfetch: allow
+request:
+  body:
+    temperature: 0.1
+permissions:
+  - action: edit
+    resource: "*"
+    effect: deny
+  - action: webfetch
+    resource: "*"
+    effect: allow
 ---
 
 You are a code reviewer. Provide actionable feedback on code changes.

@@ -2,7 +2,8 @@ import { spawn } from "node:child_process"
 
 const PULSE_SERVER = "tcp:192.168.50.195:4713"
 
-export function playSoundNotification({ client, service, soundFile }) {
+/** @param {{ service: string, soundFile: string, signal?: AbortSignal }} options */
+export function playSoundNotification({ service, soundFile, signal }) {
   const child = spawn("paplay", [soundFile], {
     detached: true,
     env: {
@@ -10,41 +11,29 @@ export function playSoundNotification({ client, service, soundFile }) {
       PULSE_SERVER,
     },
     stdio: "ignore",
+    signal,
   })
 
   let failed = false
 
   child.once("error", (error) => {
     failed = true
-    void client.app.log({
-      body: {
-        service,
-        level: "warn",
-        message: "Failed to start sound notification",
-        extra: {
-          soundFile,
-          pulseServer: PULSE_SERVER,
-          error: error.message,
-        },
-      },
+    if (signal?.aborted) return
+    console.warn(`[${service}] Failed to start sound notification`, {
+      soundFile,
+      pulseServer: PULSE_SERVER,
+      error: error.message,
     })
   })
 
-  child.once("exit", (exitCode, signal) => {
-    if (failed || exitCode === 0) return
+  child.once("exit", (exitCode, exitSignal) => {
+    if (failed || exitCode === 0 || signal?.aborted) return
 
-    void client.app.log({
-      body: {
-        service,
-        level: "warn",
-        message: "Sound notification exited non-zero",
-        extra: {
-          soundFile,
-          pulseServer: PULSE_SERVER,
-          exitCode,
-          signal,
-        },
-      },
+    console.warn(`[${service}] Sound notification exited non-zero`, {
+      soundFile,
+      pulseServer: PULSE_SERVER,
+      exitCode,
+      signal: exitSignal,
     })
   })
 
