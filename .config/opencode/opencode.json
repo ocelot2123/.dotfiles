@@ -86,6 +86,12 @@
     }
   },
   "providers": {
+    "meta": {
+      "settings": {
+        "baseURL": "http://127.0.0.1:8317/v1",
+        "apiKey": "{env:CLI_PROXY_API_KEY}"
+      }
+    },
     "openai": {
       "settings": {
         "baseURL": "http://127.0.0.1:8317/v1",
